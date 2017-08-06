@@ -1,0 +1,73 @@
+body {
+	background-image: url("../images/TallestWallpaper.png");
+	background-size:100%;
+   	background-repeat:no-repeat;
+   	height: 100%;
+   	width: 100%;
+}
+
+#heading {
+float: right;
+width: 30%;
+max-width: 300px;
+margin: 50px;
+}
+
+#title {
+	padding: 20px;
+	margin: auto;
+	padding-bottom: 0px;
+	width: 100%;
+}
+
+h1 {
+	font-size: 50px;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+	padding-top: 0px;
+}
+
+h2 {
+	font-size: 30px;
+	margin: 0;
+}
+
+h1, h2, h3 {
+	color: white;
+}
+
+.character, .enemy {
+	width: 25%;
+	max-width: 150px;
+	float: left;
+	padding: 10px;
+	background-color: black;
+	margin: 5px;
+	border: 2px solid #4fb69a;
+}
+
+.character img, .enemy img {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.charName, .hp, .enemyhp	 {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	color: white;
+}
+
+#enemies {
+	float: left;
+}
+
+.enemy {
+	border: 2px solid #fe0000;
+}
+
+#fight {
+	clear:both;
+}
