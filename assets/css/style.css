@@ -20,6 +20,12 @@ margin: 50px;
 	width: 100%;
 }
 
+#action {
+	float:left;
+	width: 65%;
+	max-width: 700px;
+}
+
 h1 {
 	font-size: 50px;
 	margin: auto;
@@ -29,17 +35,23 @@ h1 {
 }
 
 h2 {
-	font-size: 30px;
+	font-size: 24px;
 	margin: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3, p {
 	color: white;
-}
+} 
 
-.character, .enemy {
-	width: 25%;
-	max-width: 150px;
+#tag {
+ 	float: left;
+ 	text-align: center;
+ 	line-height: 125px;
+ }
+
+
+.character, .enemy, .yourCharacter, .defender {
+	max-width: 120px;
 	float: left;
 	padding: 10px;
 	background-color: black;
@@ -47,7 +59,7 @@ h1, h2, h3 {
 	border: 2px solid #4fb69a;
 }
 
-.character img, .enemy img {
+.character img, .enemy img, .yourCharacter img, .defender img {
 	width: 100%;
 	padding: 0;
 	margin: 0;
@@ -60,14 +72,26 @@ h1, h2, h3 {
 	color: white;
 }
 
+#fight {
+	clear: both;
+}
+
+button {
+	margin-top: 10px;
+}
+
 #enemies {
 	float: left;
 }
 
-.enemy {
+.enemy, .defender {
 	border: 2px solid #fe0000;
 }
 
-#fight {
-	clear:both;
+.hidden {
+	display: none;
+}
+
+#enemies, #vs, #select {
+	margin:20px;
 }

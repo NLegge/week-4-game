@@ -11,59 +11,103 @@
 			<img src="assets/images/Title.png" id="title">
 			<h1>The RPG!</h1>
 		</div>
-		<div id="select">
-			<h2>Your Character</h2>
-			<div class="character">
-				<h3 class="charName">Zim</h3>
-				<img src="assets/images/Zim.jpg">
-				<p class="hp">150</p>
+		<div id="action">
+			<div id="select">
+				<h2>Your Character</h2>
+				<div class="character" id="zim">
+					<h3 class="charName">Zim</h3>
+					<img src="assets/images/Zim.jpg">
+					<p class="hp">150</p>
+				</div>
+				<div class="character" id="gir">
+					<h3 class="charName">Gir</h3>
+					<img src="assets/images/Gir.jpg">
+					<p class="hp">160</p>
+				</div>
+				<div class="character" id="gaz">
+					<h3 class="charName">Gaz</h3>
+					<img src="assets/images/Gaz.jpg">
+					<p class="hp">180</p>
+				</div>
+				<div class="character" id="dib">
+					<h3 class="charName">Dib</h3>
+					<img src="assets/images/Dib.jpg">
+					<p class="hp">140</p>
+				</div>
 			</div>
-			<div class="character">
-				<h3 class="charName">Gir</h3>
-				<img src="assets/images/Gir.jpg">
-				<p class="hp">160</p>
-			</div>
-			<div class="character">
-				<h3 class="charName">Gaz</h3>
-				<img src="assets/images/Gaz.jpg">
-				<p class="hp">180</p>
-			</div>
-			<div class="character">
-				<h3 class="charName">Dib</h3>
-				<img src="assets/images/Dib.jpg">
-				<p class="hp">140</p>
+			<div id="vs" class="hidden">
+				<h2>FIGHT!</h2>
+				<div class="yourCharacter hidden" id="yourZim">
+					<h3 class="charName">Zim</h3>
+					<img src="assets/images/Zim.jpg">
+					<p class="hp">150</p>
+				</div>
+				<div class="yourCharacter hidden" id="yourGir">
+					<h3 class="charName">Gir</h3>
+					<img src="assets/images/Gir.jpg">
+					<p class="hp">160</p>
+				</div>
+				<div class="yourCharacter hidden" id="yourGaz">
+					<h3 class="charName">Gaz</h3>
+					<img src="assets/images/Gaz.jpg">
+					<p class="hp">180</p>
+				</div>
+				<div class="yourCharacter hidden" id="yourDib">
+					<h3 class="charName">Dib</h3>
+					<img src="assets/images/Dib.jpg">
+					<p class="hp">140</p>
+				</div>
+				<p class="hidden" id="tag">VS</p>
+				<div class="defender hidden" id="defendZim">
+					<h3 class="charName">Zim</h3>
+					<img src="assets/images/Zim.jpg">
+					<p class="hp">150</p>
+				</div>
+				<div class="defender hidden" id="defendGir">
+					<h3 class="charName">Gir</h3>
+					<img src="assets/images/Gir.jpg">
+					<p class="hp">160</p>
+				</div>
+				<div class="defender hidden" id="defendGaz">
+					<h3 class="charName">Gaz</h3>
+					<img src="assets/images/Gaz.jpg">
+					<p class="hp">180</p>
+				</div>
+				<div class="defender hidden" id="defendDib">
+					<h3 class="charName">Dib</h3>
+					<img src="assets/images/Dib.jpg">
+					<p class="hp">140</p>
+				</div>
+				<div id="fight">
+					<button class="hidden">Attack</button>
+				</div>
 			</div>
 		</div>
 		<div id="enemies">
 			<h2>Enemies Available to Attack</h2>
-			<div class="enemy">
+			<div class="enemy hidden" id="badZim">
 				<h3 class="charName">Zim</h3>
 				<img src="assets/images/Zim.jpg">
 				<p class="enemyhp">150</p>
 			</div>
-			<div class="enemy">
+			<div class="enemy hidden" id="badGir">
 				<h3 class="charName">Gir</h3>
 				<img src="assets/images/Gir.jpg">
 				<p class="enemyhp">160</p>
 			</div>
-			<div class="enemy">
+			<div class="enemy hidden" id="badGaz">
 				<h3 class="charName">Gaz</h3>
 				<img src="assets/images/Gaz.jpg">
 				<p class="enemyhp">180</p>
 			</div>
-			<div class="enemy">
+			<div class="enemy hidden" id="badDib">
 				<h3 class="charName">Dib</h3>
 				<img src="assets/images/Dib.jpg">
 				<p class="enemyhp">140</p>
 			</div>
 		</div>
-		<div id="fight">
-			<h2>Fight Section</h2>
-			<button>Attack</button>
-		</div>
-		<div id="defender">
-			<h2>Defender</h2>
-		</div>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
