@@ -1,5 +1,5 @@
 //on click to select your character. This hides "Your Character" section and makes vs section visible, 
-		//moves your character to vs section, & moves remaining characters to enemy section.
+//moves your character to vs section, & moves remaining characters to enemy section.
 //on click to select enemy. Moves selected enemy to the vs section.
 //Assign attack power variable for each character.
 //on click for attak button removes hp from defender and additional hp from your character.
@@ -7,79 +7,57 @@
 //if all enemies are defeated, you win.
 //Option to start new game?
 
-//your character selection
-
 $(document).ready(function() {
 
-	//variables
-	var hero;
-	var villain;
-	var villainChosen = false;
-	var zimHP = 150;
-	var girHP = 160;
-	var gazHP = 180;
-	var dibHP = 140;
-	var zimAttack = 10;
-	var girAttack = 15;
-	var gazAttack = 25;
-	var dibAttack = 5;
+    //variables
+    var hero;
+    var villain;
+    var villainChosen = false;
+    var zimHP = 120;
+    var girHP = 150;
+    var gazHP = 180;
+    var dibHP = 100;
+    var zimAttack = 8;
+    var girAttack = 20;
+    var gazAttack = 25;
+    var dibAttack = 5;
 
-	//Select your character
-	$(".character").on("click", function() {
-		$("#vs").removeClass("hidden");
-		$("#select").addClass("hidden");
-		hero = $(this).attr('id');
-		console.log(hero);
-		if (hero === "zim") {
-			$("#badGir, #badGaz, #badDib").removeClass("hidden");
-			$("#yourZim").removeClass("hidden");
-		}
-		else if (hero === "gir") {
-			$("#badZim, #badGaz, #badDib").removeClass("hidden");
-			$("#yourGir").removeClass("hidden");
-		}
-		else if (hero === "gaz") {
-			$("#badZim, #badGir, #badDib").removeClass("hidden");
-			$("#yourGaz").removeClass("hidden");
-		}
-		else if (hero === "dib") {
-			$("#badZim, #badGir, #badGaz").removeClass("hidden");
-			$("#yourDib").removeClass("hidden");
-		}
-	});
+    $("#message").html("Select your character!");
 
-	//Select your enemy
-	$(".enemy").on("click", function() {
-		if (villainChosen === false) {
-			$("#tag").removeClass("hidden");
-			$("button").removeClass("hidden");
-			villain = $(this).attr('id');
-			console.log(villain);
-			villainChosen = true;
-			if (villain === "badZim") {
-				$("#defendZim").removeClass("hidden");
-				$("#badZim").addClass("hidden");
-			}
-			else if (villain === "badGir") {
-				$("#defendGir").removeClass("hidden");
-				$("#badGir").addClass("hidden");
-			}
-			else if (villain === "badGaz") {
-				$("#defendGaz").removeClass("hidden");
-				$("#badGaz").addClass("hidden");
-			}
-			else if (villain === "badDib") {
-				$("#defendDib").removeClass("hidden");
-				$("#badDib").addClass("hidden");
-			}
-		}
-		else if (villainChosen === true) {
-			null;
-		}
+    //Select your character
+    $(".character").on("click", function() {
+      $("#vs, #enemies").removeClass("hidden");
+      $("#select").addClass("hidden");
+      hero = $(this).attr('id');
+      $("#your" + hero).removeClass("hidden");
+      $("#bad" + hero).addClass("hidden");
+      $("#message").html("Select your enemy!");
+    });
 
-	});	
-	
+    //Select your enemy
+    $(".enemy").on("click", function() {
+      if (villainChosen === false) {
+        $("#tag, button").removeClass("hidden");
+        villain = $(this).attr('id');
+        villainChosen = true;
+        $("#defend" + villain).removeClass("hidden");
+        $("#" + villain).addClass("hidden");
+        $("#message").html("Click the Attack button to attack your enemy!");
+      }
+    });
 
-//dont forget to 'enable' other enemies when game is won
+    var test = $('#goodGuy').find('div:visible:first').text('id');
+    console.log(test);
+
+    //Attack Button
+    $("button").on("click", function() {
+      var test = $('#goodGuy').find('div:visible:first').text('id');
+      console.log(test);
+
+   });
+
+
+
+    //dont forget to 'enable' other enemies when game is won
 
 });
