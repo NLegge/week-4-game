@@ -1,4 +1,4 @@
-//on click to select your character. This hides "Your Character" section and makes vs section visible, 
+//on click to select your character. This hides 'Your Character' section and makes vs section visible, 
 //moves your character to vs section, & moves remaining characters to enemy section.
 //on click to select enemy. Moves selected enemy to the vs section.
 //Assign attack power variable for each character.
@@ -9,55 +9,167 @@
 
 $(document).ready(function() {
 
-    //variables
-    var hero;
-    var villain;
-    var villainChosen = false;
-    var zimHP = 120;
-    var girHP = 150;
-    var gazHP = 180;
-    var dibHP = 100;
-    var zimAttack = 8;
-    var girAttack = 20;
-    var gazAttack = 25;
-    var dibAttack = 5;
+  //variables
+  var hero;
+  var villain;
+  var villainChosen = false;
+  var hp = {
+    zim: 120,
+    gir: 150,
+    gaz: 180,
+    dib: 100
+  }
+  var heroHp;
+  var heroAdd;
+  var villainHp;
+  var heroAttack;
+  var counterAttack;
+  var counter = 1;
+  var wins = 0;
 
-    $("#message").html("Select your character!");
+  $('#message').html('Select your character!');
 
-    //Select your character
-    $(".character").on("click", function() {
-      $("#vs, #enemies").removeClass("hidden");
-      $("#select").addClass("hidden");
-      hero = $(this).attr('id');
-      $("#your" + hero).removeClass("hidden");
-      $("#bad" + hero).addClass("hidden");
-      $("#message").html("Select your enemy!");
-    });
+  //Select your character
+  $('.character').on('click', function() {
+    $('#vs, #enemies').removeClass('hidden');
+    $('#select').addClass('hidden');
+    hero = $(this).attr('id');
+    $('.yourCharacter').removeClass('hidden');
+    var heroName = hero.toUpperCase();
+    $('.goodCharName').html(heroName);
+    $('#goodImg').attr('src', 'assets/images/' + hero + '.jpg');
+    if (hero === 'zim') {
+      $('.goodHp').html(hp.zim);
+      $('#badzim').addClass('hidden');
+    }
+    else if (hero === 'gir') {
+      $('.goodHp').html(hp.gir);
+      $('#badgir').addClass('hidden');
+    }
+    else if (hero === 'gaz') {
+      $('.goodHp').html(hp.gaz);
+      $('#badgaz').addClass('hidden');
+    }
+    else if (hero === 'dib') {
+      $('.goodHp').html(hp.dib);
+      $('#baddib').addClass('hidden');
+    }
+    $('#message').html('Select your enemy!');
+  });
 
-    //Select your enemy
-    $(".enemy").on("click", function() {
-      if (villainChosen === false) {
-        $("#tag, button").removeClass("hidden");
-        villain = $(this).attr('id');
-        villainChosen = true;
-        $("#defend" + villain).removeClass("hidden");
-        $("#" + villain).addClass("hidden");
-        $("#message").html("Click the Attack button to attack your enemy!");
+  //Select your enemy
+  $('.enemy').on('click', function() {
+    if (villainChosen === false) {
+      $('button').prop("disabled",false);
+      villainChosen = true;
+      $('#tag, button').removeClass('hidden');
+      villain = $(this).attr('id').substring(3);
+      $('.defender').removeClass('hidden');
+      var villainName = villain.toUpperCase();
+      $('.badCharName').html(villainName);
+      //$('.badHp').html('hp.' + villain); //object not working correctly
+      $('#badImg').attr('src', 'assets/images/' + villain + '.jpg');
+      if (villain === 'zim') {
+      $('.badHp').html(hp.zim);
+      $('#badzim').addClass('hidden');
+    }
+    else if (villain === 'gir') {
+      $('.badHp').html(hp.gir);
+      $('#badgir').addClass('hidden');
+    }
+    else if (villain === 'gaz') {
+      $('.badHp').html(hp.gaz);
+      $('#badgaz').addClass('hidden');
+    }
+    else if (villain === 'dib') {
+      $('.badHp').html(hp.dib);
+      $('#baddib').addClass('hidden');
+    }
+      $('#message').html('Click the Attack button to attack your enemy!');
+      if (wins === 2) {
+        $('#enemyAvailable').html("No More Enemies");
       }
-    });
+    }
+  });
 
-    var test = $('#goodGuy').find('div:visible:first').text('id');
-    console.log(test);
+  //Attack Button
+  $('button').on('click', function() {
+    if ($('button').text() === 'Attack') {
+      heroHp = parseInt($(".goodHp").text());
+      villainHp = parseInt($(".badHp").text());
+      hero = $(".goodCharName").text();
+      villain = $(".badCharName").text();
+      if (hero === "ZIM") {
+        heroAttack = 8 * counter; 
+      }
+      else if (hero === 'GIR') {
+        heroAttack = 20 * counter;
+      }
+      else if (hero === 'GAZ') {
+        heroAttack = 25 * counter;
+      }
+      else if (hero === 'DIB') {
+        heroAttack = 5 * counter;
+      }
+      else {}
+      if (villain === 'ZIM') {
+        counterAttack = 8;
+      }
+      else if (villain === 'GIR') {
+        counterAttack = 20;
+      }
+      else if (villain === 'GAZ') {
+        counterAttack = 25;
+      }
+      else if (villain === 'DIB') {
+        counterAttack = 5;
+      }
+      else {}
+      $('#message').html("You attacked " + villain + " for " + heroAttack + " damage.<br>" 
+        + villain + " attacked you back for " + counterAttack + " damage." );
+      $('#message').css({fontSize: 25});
+      villainHp -= heroAttack;
+      $(".badHp").html(villainHp);
+      if (villainHp > 0) {
+        heroHp -= counterAttack;
+      }
+      $('.goodHp').html(heroHp);
+      heroAttack += heroAdd;
+      counter++;
+      winLose();
+      if (wins === 3) {
+        $('#message').html('You Win!<br>Click Restart to play again!');
+        $('button').html('Restart');
+        $('button').prop("disabled",false);
+        $('button').on('click', function() {
+        location.reload();
+      });
+      }
+    }
+  });
 
-    //Attack Button
-    $("button").on("click", function() {
-      var test = $('#goodGuy').find('div:visible:first').text('id');
-      console.log(test);
-
-   });
-
-
-
-    //dont forget to 'enable' other enemies when game is won
+  //determine if player has won or lost
+  function winLose () {
+    if (heroHp <= 0 && villainHp > 0) {
+      $('#message').html('You Lose!<br>Click Restart to play again!');
+      $('button').html('Restart');
+      $('button').on('click', function() {
+        location.reload();
+      });
+    }
+    else if (villainHp <= 0 && heroHp > 0 && wins <= 2) {
+      $('#message').html('You Win!<br>Choose another opponent!');
+      $('button').prop("disabled",true);
+      villainChosen = false;
+      wins++;
+    }
+    else if (villainHp <= 0 && heroHp <= 0) {
+      $('#message').html('You Both Lose!<br>Click Restart to play again!');
+      $('button').html('Restart');
+      $('button').on('click', function() {
+        location.reload();
+      });
+    }
+  }
 
 });
