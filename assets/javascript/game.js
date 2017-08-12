@@ -151,6 +151,7 @@ $(document).ready(function() {
     else if (villainHp <= 0 && heroHp > 0 && wins <= 2) {
       $('#message').html('You are victorious!<br>Choose another opponent!');
       $('button').prop("disabled",true);
+      $('.defender').addClass('hidden');
       villainChosen = false;
       wins++;
     }
