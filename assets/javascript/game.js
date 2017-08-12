@@ -1,12 +1,3 @@
-//on click to select your character. This hides 'Your Character' section and makes vs section visible, 
-//moves your character to vs section, & moves remaining characters to enemy section.
-//on click to select enemy. Moves selected enemy to the vs section.
-//Assign attack power variable for each character.
-//on click for attak button removes hp from defender and additional hp from your character.
-//if your character hp reaches 0 or below, you lose, else if defender hp reaches 0 defender disappears & you pick a new enemy.
-//if all enemies are defeated, you win.
-//Option to start new game?
-
 $(document).ready(function() {
 
   //variables
