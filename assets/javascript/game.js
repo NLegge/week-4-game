@@ -54,7 +54,7 @@ $(document).ready(function() {
       $('.goodHp').html(hp.dib);
       $('#baddib').addClass('hidden');
     }
-    $('#message').html('Select your enemy!');
+    $('#message').html('You have chosen ' + heroName + '!<br>Select your enemy!');
   });
 
   //Select your enemy
@@ -85,7 +85,7 @@ $(document).ready(function() {
       $('.badHp').html(hp.dib);
       $('#baddib').addClass('hidden');
     }
-      $('#message').html('Click the Attack button to attack your enemy!');
+      $('#message').html('You have chosen ' + villainName + '!<br>Click the Attack button to attack your enemy!');
       if (wins === 2) {
         $('#enemyAvailable').html("No More Enemies");
       }
@@ -138,7 +138,7 @@ $(document).ready(function() {
       counter++;
       winLose();
       if (wins === 3) {
-        $('#message').html('You Win!<br>Click Restart to play again!');
+        $('#message').html('You are victorious!<br>Click Restart to play again!');
         $('button').html('Restart');
         $('button').prop("disabled",false);
         $('button').on('click', function() {
@@ -151,20 +151,20 @@ $(document).ready(function() {
   //determine if player has won or lost
   function winLose () {
     if (heroHp <= 0 && villainHp > 0) {
-      $('#message').html('You Lose!<br>Click Restart to play again!');
+      $('#message').html('You have been defeated!<br>Click Restart to play again!');
       $('button').html('Restart');
       $('button').on('click', function() {
         location.reload();
       });
     }
     else if (villainHp <= 0 && heroHp > 0 && wins <= 2) {
-      $('#message').html('You Win!<br>Choose another opponent!');
+      $('#message').html('You are victorious!<br>Choose another opponent!');
       $('button').prop("disabled",true);
       villainChosen = false;
       wins++;
     }
     else if (villainHp <= 0 && heroHp <= 0) {
-      $('#message').html('You Both Lose!<br>Click Restart to play again!');
+      $('#message').html("It's a draw!<br>Click Restart to play again!");
       $('button').html('Restart');
       $('button').on('click', function() {
         location.reload();
