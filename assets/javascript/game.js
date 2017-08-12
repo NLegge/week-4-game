@@ -14,7 +14,7 @@ $(document).ready(function() {
   var villain;
   var villainChosen = false;
   var hp = {
-    zim: 120,
+    zim: 130,
     gir: 150,
     gaz: 180,
     dib: 100
@@ -103,26 +103,26 @@ $(document).ready(function() {
         heroAttack = 8 * counter; 
       }
       else if (hero === 'GIR') {
-        heroAttack = 20 * counter;
-      }
-      else if (hero === 'GAZ') {
         heroAttack = 25 * counter;
       }
+      else if (hero === 'GAZ') {
+        heroAttack = 20 * counter;
+      }
       else if (hero === 'DIB') {
-        heroAttack = 5 * counter;
+        heroAttack = 10 * counter;
       }
       else {}
       if (villain === 'ZIM') {
         counterAttack = 8;
       }
       else if (villain === 'GIR') {
-        counterAttack = 20;
-      }
-      else if (villain === 'GAZ') {
         counterAttack = 25;
       }
+      else if (villain === 'GAZ') {
+        counterAttack = 20;
+      }
       else if (villain === 'DIB') {
-        counterAttack = 5;
+        counterAttack = 10;
       }
       else {}
       $('#message').html("You attacked " + villain + " for " + heroAttack + " damage.<br>" 
